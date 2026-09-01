@@ -1,0 +1,217 @@
+{
+  "months": [
+    "2026-01",
+    "2026-02",
+    "2026-03"
+  ],
+  "categories": [
+    "NORMAL",
+    "SCRATCH",
+    "EDGE",
+    "CENTER"
+  ],
+  "lots_by_category": {
+    "NORMAL": [
+      "DTL_NORM_001",
+      "DTL_NORM_002"
+    ],
+    "SCRATCH": [
+      "DTL_SCRATCH_001",
+      "DTL_SCRATCH_002"
+    ],
+    "EDGE": [
+      "DTL_EDGE_001",
+      "DTL_EDGE_002"
+    ],
+    "CENTER": [
+      "DTL_CENTER_001",
+      "DTL_CENTER_002"
+    ]
+  },
+  "dies_by_lot": {
+    "DTL_CENTER_001": [
+      "DTL_CENTER_001_D001",
+      "DTL_CENTER_001_D002",
+      "DTL_CENTER_001_D003"
+    ],
+    "DTL_CENTER_002": [
+      "DTL_CENTER_002_D001",
+      "DTL_CENTER_002_D002",
+      "DTL_CENTER_002_D003"
+    ],
+    "DTL_EDGE_001": [
+      "DTL_EDGE_001_D001",
+      "DTL_EDGE_001_D002",
+      "DTL_EDGE_001_D003"
+    ],
+    "DTL_EDGE_002": [
+      "DTL_EDGE_002_D001",
+      "DTL_EDGE_002_D002",
+      "DTL_EDGE_002_D003"
+    ],
+    "DTL_NORM_001": [
+      "DTL_NORM_001_D001",
+      "DTL_NORM_001_D002",
+      "DTL_NORM_001_D003"
+    ],
+    "DTL_NORM_002": [
+      "DTL_NORM_002_D001",
+      "DTL_NORM_002_D002",
+      "DTL_NORM_002_D003"
+    ],
+    "DTL_SCRATCH_001": [
+      "DTL_SCRATCH_001_D001",
+      "DTL_SCRATCH_001_D002",
+      "DTL_SCRATCH_001_D003"
+    ],
+    "DTL_SCRATCH_002": [
+      "DTL_SCRATCH_002_D001",
+      "DTL_SCRATCH_002_D002",
+      "DTL_SCRATCH_002_D003"
+    ]
+  },
+  "identities": [
+    {
+      "lot_id": "DTL_CENTER_001",
+      "die_id": "DTL_CENTER_001_D001",
+      "lot_category": "CENTER"
+    },
+    {
+      "lot_id": "DTL_CENTER_001",
+      "die_id": "DTL_CENTER_001_D002",
+      "lot_category": "CENTER"
+    },
+    {
+      "lot_id": "DTL_CENTER_001",
+      "die_id": "DTL_CENTER_001_D003",
+      "lot_category": "CENTER"
+    },
+    {
+      "lot_id": "DTL_CENTER_002",
+      "die_id": "DTL_CENTER_002_D001",
+      "lot_category": "CENTER"
+    },
+    {
+      "lot_id": "DTL_CENTER_002",
+      "die_id": "DTL_CENTER_002_D002",
+      "lot_category": "CENTER"
+    },
+    {
+      "lot_id": "DTL_CENTER_002",
+      "die_id": "DTL_CENTER_002_D003",
+      "lot_category": "CENTER"
+    },
+    {
+      "lot_id": "DTL_EDGE_001",
+      "die_id": "DTL_EDGE_001_D001",
+      "lot_category": "EDGE"
+    },
+    {
+      "lot_id": "DTL_EDGE_001",
+      "die_id": "DTL_EDGE_001_D002",
+      "lot_category": "EDGE"
+    },
+    {
+      "lot_id": "DTL_EDGE_001",
+      "die_id": "DTL_EDGE_001_D003",
+      "lot_category": "EDGE"
+    },
+    {
+      "lot_id": "DTL_EDGE_002",
+      "die_id": "DTL_EDGE_002_D001",
+      "lot_category": "EDGE"
+    },
+    {
+      "lot_id": "DTL_EDGE_002",
+      "die_id": "DTL_EDGE_002_D002",
+      "lot_category": "EDGE"
+    },
+    {
+      "lot_id": "DTL_EDGE_002",
+      "die_id": "DTL_EDGE_002_D003",
+      "lot_category": "EDGE"
+    },
+    {
+      "lot_id": "DTL_NORM_001",
+      "die_id": "DTL_NORM_001_D001",
+      "lot_category": "NORMAL"
+    },
+    {
+      "lot_id": "DTL_NORM_001",
+      "die_id": "DTL_NORM_001_D002",
+      "lot_category": "NORMAL"
+    },
+    {
+      "lot_id": "DTL_NORM_001",
+      "die_id": "DTL_NORM_001_D003",
+      "lot_category": "NORMAL"
+    },
+    {
+      "lot_id": "DTL_NORM_002",
+      "die_id": "DTL_NORM_002_D001",
+      "lot_category": "NORMAL"
+    },
+    {
+      "lot_id": "DTL_NORM_002",
+      "die_id": "DTL_NORM_002_D002",
+      "lot_category": "NORMAL"
+    },
+    {
+      "lot_id": "DTL_NORM_002",
+      "die_id": "DTL_NORM_002_D003",
+      "lot_category": "NORMAL"
+    },
+    {
+      "lot_id": "DTL_SCRATCH_001",
+      "die_id": "DTL_SCRATCH_001_D001",
+      "lot_category": "SCRATCH"
+    },
+    {
+      "lot_id": "DTL_SCRATCH_001",
+      "die_id": "DTL_SCRATCH_001_D002",
+      "lot_category": "SCRATCH"
+    },
+    {
+      "lot_id": "DTL_SCRATCH_001",
+      "die_id": "DTL_SCRATCH_001_D003",
+      "lot_category": "SCRATCH"
+    },
+    {
+      "lot_id": "DTL_SCRATCH_002",
+      "die_id": "DTL_SCRATCH_002_D001",
+      "lot_category": "SCRATCH"
+    },
+    {
+      "lot_id": "DTL_SCRATCH_002",
+      "die_id": "DTL_SCRATCH_002_D002",
+      "lot_category": "SCRATCH"
+    },
+    {
+      "lot_id": "DTL_SCRATCH_002",
+      "die_id": "DTL_SCRATCH_002_D003",
+      "lot_category": "SCRATCH"
+    }
+  ],
+  "counts": {
+    "lots": 8,
+    "dies": 24,
+    "dies_per_lot": {
+      "DTL_CENTER_001": 3,
+      "DTL_CENTER_002": 3,
+      "DTL_EDGE_001": 3,
+      "DTL_EDGE_002": 3,
+      "DTL_NORM_001": 3,
+      "DTL_NORM_002": 3,
+      "DTL_SCRATCH_001": 3,
+      "DTL_SCRATCH_002": 3
+    },
+    "by_category_dies": {
+      "NORMAL": 6,
+      "SCRATCH": 6,
+      "EDGE": 6,
+      "CENTER": 6
+    }
+  },
+  "stable_across_months": true,
+  "note": "Identities derived from uploaded Jan/Feb/Mar measurements for this analysis session."
+}

@@ -1,0 +1,77 @@
+{
+  "source_files": {
+    "2026-01": "dtl_input_2026_01.zip",
+    "2026-02": "dtl_input_2026_02.zip",
+    "2026-03": "dtl_input_2026_03.zip"
+  },
+  "month_mappings": {
+    "2026-01": {
+      "upload_slot": "january",
+      "source_filename": "dtl_input_2026_01.zip",
+      "analysis_month": "2026-01",
+      "original_production_month": "2026-01"
+    },
+    "2026-02": {
+      "upload_slot": "february",
+      "source_filename": "dtl_input_2026_02.zip",
+      "analysis_month": "2026-02",
+      "original_production_month": "2026-02"
+    },
+    "2026-03": {
+      "upload_slot": "march",
+      "source_filename": "dtl_input_2026_03.zip",
+      "analysis_month": "2026-03",
+      "original_production_month": "2026-03"
+    }
+  },
+  "provenance": {
+    "used_uploaded_measurements": true,
+    "used_static_three_month_measurements": false,
+    "input_format": "temporal_measurements_csv",
+    "source_files": {
+      "2026-01": "dtl_input_2026_01.zip",
+      "2026-02": "dtl_input_2026_02.zip",
+      "2026-03": "dtl_input_2026_03.zip"
+    },
+    "month_mappings": {
+      "2026-01": {
+        "upload_slot": "january",
+        "source_filename": "dtl_input_2026_01.zip",
+        "analysis_month": "2026-01",
+        "original_production_month": "2026-01"
+      },
+      "2026-02": {
+        "upload_slot": "february",
+        "source_filename": "dtl_input_2026_02.zip",
+        "analysis_month": "2026-02",
+        "original_production_month": "2026-02"
+      },
+      "2026-03": {
+        "upload_slot": "march",
+        "source_filename": "dtl_input_2026_03.zip",
+        "analysis_month": "2026-03",
+        "original_production_month": "2026-03"
+      }
+    },
+    "primary_die": {
+      "lot_id": "DTL_NORM_001",
+      "die_id": "DTL_NORM_001_D001",
+      "lot_category": "NORMAL"
+    },
+    "n_primary": 27,
+    "n_all_die_rows": 27,
+    "scorable_parameters": [
+      "ir_drop",
+      "thermal",
+      "VMIN",
+      "VMAX",
+      "IDDQ",
+      "SUPPLY_CURRENT",
+      "CONTACT_RESISTANCE",
+      "INTERCONNECT_RESISTANCE",
+      "ON_RESISTANCE"
+    ],
+    "n_dies_precomputed": 1
+  },
+  "data_provenance": "Analysis generated from uploaded test data (demo cache)"
+}

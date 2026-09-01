@@ -1,0 +1,22 @@
+{
+  "example_row_keys": [
+    "domain",
+    "parameter",
+    "lot_context_features",
+    "sequence_embedding_later",
+    "current_limit",
+    "candidate_limit",
+    "simulated_yield",
+    "objective_score",
+    "borderline_rate",
+    "false_fail_proxy"
+  ],
+  "forbidden_labels": [
+    "true_optimal_limit",
+    "latent_quality",
+    "scenario_ground_truth",
+    "evaluation objective_score"
+  ],
+  "phase4_implements_gru": false,
+  "purpose": "Phase 6 may join these outcomes with Phase 3 features + Core sequences for GRU ranker labels"
+}
