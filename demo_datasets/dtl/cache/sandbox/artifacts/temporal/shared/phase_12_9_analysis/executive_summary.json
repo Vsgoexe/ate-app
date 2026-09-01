@@ -1,0 +1,135 @@
+{
+  "decision_summary_all_dies": {
+    "by_month": {
+      "2026-01": {
+        "RECOMMEND": 9
+      },
+      "2026-02": {
+        "RECOMMEND": 9
+      },
+      "2026-03": {
+        "RECOMMEND": 9
+      }
+    },
+    "counts": {
+      "RECOMMEND": 27
+    },
+    "total": 27
+  },
+  "decision_summary_primary": {
+    "by_month": {
+      "2026-01": {
+        "RECOMMEND": 9
+      },
+      "2026-02": {
+        "RECOMMEND": 9
+      },
+      "2026-03": {
+        "RECOMMEND": 9
+      }
+    },
+    "counts": {
+      "RECOMMEND": 27
+    },
+    "total": 27
+  },
+  "generated_at_utc": "2026-09-01T10:43:26.790146+00:00",
+  "limitations": [
+    "Simulated yield is not guaranteed production yield.",
+    "ML score is not simulated yield.",
+    "Counterfactual cost estimates are not measured ATE savings.",
+    "Analysis session uses uploaded measurements only for this session."
+  ],
+  "ml_tie_break_proof_count": 12,
+  "ml_tie_break_proof_example": {
+    "die_id": "DTL_NORM_001_D001",
+    "kind": "ml_tie_break",
+    "lot_id": "DTL_NORM_001",
+    "other_count": 4,
+    "parameter": "ir_drop",
+    "parameter_display": "IR_DROP_MV",
+    "production_month": "2026-01",
+    "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+    "tied_candidates": [
+      {
+        "candidate_limit": 50.0,
+        "is_selected": true,
+        "ml_rank": 1,
+        "ml_score": 0.8410208225250244,
+        "simulated_yield": 1.0
+      },
+      {
+        "candidate_limit": 55.0,
+        "is_selected": false,
+        "ml_rank": 2,
+        "ml_score": 0.8403281569480896,
+        "simulated_yield": 1.0
+      },
+      {
+        "candidate_limit": 45.0,
+        "is_selected": false,
+        "ml_rank": 3,
+        "ml_score": 0.8395354747772217,
+        "simulated_yield": 1.0
+      },
+      {
+        "candidate_limit": 60.0,
+        "is_selected": false,
+        "ml_rank": 4,
+        "ml_score": 0.8388528823852539,
+        "simulated_yield": 1.0
+      },
+      {
+        "candidate_limit": 65.0,
+        "is_selected": false,
+        "ml_rank": 5,
+        "ml_score": 0.8374393582344055,
+        "simulated_yield": 1.0
+      }
+    ],
+    "tied_yield": 1.0,
+    "winner_limit": 50.0
+  },
+  "model_routing_verified": true,
+  "months": [
+    "2026-01",
+    "2026-02",
+    "2026-03"
+  ],
+  "n_primary_recommendations": 27,
+  "parameters_recommendation_changed": [
+    "IR_DROP_MV"
+  ],
+  "parameters_recommendation_stable": [
+    "THERMAL_C",
+    "VMIN",
+    "VMAX",
+    "IDDQ",
+    "SUPPLY_CURRENT",
+    "CONTACT_RESISTANCE",
+    "INTERCONNECT_RESISTANCE",
+    "ON_RESISTANCE"
+  ],
+  "phase": "12.9-upload-session",
+  "primary_die": {
+    "die_id": "DTL_NORM_001_D001",
+    "lot_id": "DTL_NORM_001"
+  },
+  "scorable_parameters": [
+    "IR_DROP_MV",
+    "THERMAL_C",
+    "VMIN",
+    "VMAX",
+    "IDDQ",
+    "SUPPLY_CURRENT",
+    "CONTACT_RESISTANCE",
+    "INTERCONNECT_RESISTANCE",
+    "ON_RESISTANCE"
+  ],
+  "used_static_three_month_measurements": false,
+  "used_uploaded_measurements": true,
+  "what_changed_summary": "On primary die DTL_NORM_001_D001, analysis was generated from uploaded Jan/Feb/Mar measurements.",
+  "what_ml_does": "The GRU scores candidate DTLs and produces ML rankings. The recommendation policy then uses maximum eligible simulated yield as the primary selection criterion and ML rank as the tie-breaker.",
+  "yield_first_proof_count": 0,
+  "yield_first_proof_example": null
+}

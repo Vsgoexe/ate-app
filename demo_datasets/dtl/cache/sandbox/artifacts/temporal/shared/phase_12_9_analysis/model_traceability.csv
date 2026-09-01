@@ -1,0 +1,10 @@
+"parameter","parameter_display","model_expected","routing_ok"
+"ir_drop","IR_DROP_MV","core_gru_temporal_v1",true
+"thermal","THERMAL_C","core_gru_temporal_v1",true
+"VMIN","VMIN","unified_parameter_gru_v1",true
+"VMAX","VMAX","unified_parameter_gru_v1",true
+"IDDQ","IDDQ","unified_parameter_gru_v1",true
+"SUPPLY_CURRENT","SUPPLY_CURRENT","unified_parameter_gru_v1",true
+"CONTACT_RESISTANCE","CONTACT_RESISTANCE","unified_parameter_gru_v1",true
+"INTERCONNECT_RESISTANCE","INTERCONNECT_RESISTANCE","unified_parameter_gru_v1",true
+"ON_RESISTANCE","ON_RESISTANCE","unified_parameter_gru_v1",true

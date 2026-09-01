@@ -1,0 +1,18 @@
+{
+  "name": "verilumen-ate-desktop",
+  "productName": "VERILUMEN ATE Intelligence",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VERILUMEN ATE Intelligence — offline Windows desktop shell",
+  "author": "VERILUMEN",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --win nsis",
+    "build:win": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-windows.ps1"
+  },
+  "devDependencies": {
+    "electron": "^35.2.1",
+    "electron-builder": "^26.0.12"
+  }
+}

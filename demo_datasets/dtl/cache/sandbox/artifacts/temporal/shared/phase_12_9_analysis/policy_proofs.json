@@ -1,0 +1,510 @@
+{
+  "ml_tie_break_proofs": [
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 4,
+      "parameter": "ir_drop",
+      "parameter_display": "IR_DROP_MV",
+      "production_month": "2026-01",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 50.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.8410208225250244,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 55.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.8403281569480896,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 45.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.8395354747772217,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 60.0,
+          "is_selected": false,
+          "ml_rank": 4,
+          "ml_score": 0.8388528823852539,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 65.0,
+          "is_selected": false,
+          "ml_rank": 5,
+          "ml_score": 0.8374393582344055,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 50.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 4,
+      "parameter": "thermal",
+      "parameter_display": "THERMAL_C",
+      "production_month": "2026-01",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 92.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9386199116706848,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 90.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.9359836578369141,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 85.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.9268972873687744,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 80.0,
+          "is_selected": false,
+          "ml_rank": 4,
+          "ml_score": 0.913115918636322,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 75.0,
+          "is_selected": false,
+          "ml_rank": 5,
+          "ml_score": 0.8917725682258606,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 92.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 2,
+      "parameter": "SUPPLY_CURRENT",
+      "parameter_display": "SUPPLY_CURRENT",
+      "production_month": "2026-01",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 200.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 1.0268712043762207,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 170.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.9615028500556946,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 150.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.8551769256591797,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 200.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 1,
+      "parameter": "CONTACT_RESISTANCE",
+      "parameter_display": "CONTACT_RESISTANCE",
+      "production_month": "2026-01",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 10.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9781398773193359,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 8.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.8975681066513062,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 10.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 2,
+      "parameter": "ON_RESISTANCE",
+      "parameter_display": "ON_RESISTANCE",
+      "production_month": "2026-01",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 50.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9621875286102295,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 40.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.9323359727859497,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 35.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.8623981475830078,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 50.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 4,
+      "parameter": "ir_drop",
+      "parameter_display": "IR_DROP_MV",
+      "production_month": "2026-02",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 72.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.824392557144165,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 70.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.8238612413406372,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 65.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.8231794238090515,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 60.0,
+          "is_selected": false,
+          "ml_rank": 4,
+          "ml_score": 0.8226858973503113,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 55.0,
+          "is_selected": false,
+          "ml_rank": 5,
+          "ml_score": 0.8216729164123535,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 72.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 4,
+      "parameter": "thermal",
+      "parameter_display": "THERMAL_C",
+      "production_month": "2026-02",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 92.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9083572626113892,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 90.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.9050780534744263,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 85.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.8942893147468567,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 80.0,
+          "is_selected": false,
+          "ml_rank": 4,
+          "ml_score": 0.8782564997673035,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 75.0,
+          "is_selected": false,
+          "ml_rank": 5,
+          "ml_score": 0.8550553321838379,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 92.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 1,
+      "parameter": "SUPPLY_CURRENT",
+      "parameter_display": "SUPPLY_CURRENT",
+      "production_month": "2026-02",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 200.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9768821001052856,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 170.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.8952709436416626,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 200.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 1,
+      "parameter": "ON_RESISTANCE",
+      "parameter_display": "ON_RESISTANCE",
+      "production_month": "2026-02",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 50.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9211827516555786,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 40.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.860205888748169,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 50.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 4,
+      "parameter": "ir_drop",
+      "parameter_display": "IR_DROP_MV",
+      "production_month": "2026-03",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 55.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.8307693004608154,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 60.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.8305788040161133,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 72.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.8304513692855835,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 70.0,
+          "is_selected": false,
+          "ml_rank": 4,
+          "ml_score": 0.8302271962165833,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 65.0,
+          "is_selected": false,
+          "ml_rank": 5,
+          "ml_score": 0.8301838636398315,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 55.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 4,
+      "parameter": "thermal",
+      "parameter_display": "THERMAL_C",
+      "production_month": "2026-03",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 92.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 0.9230093955993652,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 90.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.9200435280799866,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 85.0,
+          "is_selected": false,
+          "ml_rank": 3,
+          "ml_score": 0.909984827041626,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 80.0,
+          "is_selected": false,
+          "ml_rank": 4,
+          "ml_score": 0.8950240015983582,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 75.0,
+          "is_selected": false,
+          "ml_rank": 5,
+          "ml_score": 0.8724461197853088,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 92.0
+    },
+    {
+      "die_id": "DTL_NORM_001_D001",
+      "kind": "ml_tie_break",
+      "lot_id": "DTL_NORM_001",
+      "other_count": 1,
+      "parameter": "SUPPLY_CURRENT",
+      "parameter_display": "SUPPLY_CURRENT",
+      "production_month": "2026-03",
+      "statement": "Multiple eligible candidates share the maximum simulated yield; ML rank (best among tied) determined the final selection.",
+      "tied_candidates": [
+        {
+          "candidate_limit": 200.0,
+          "is_selected": true,
+          "ml_rank": 1,
+          "ml_score": 1.0167534351348877,
+          "simulated_yield": 1.0
+        },
+        {
+          "candidate_limit": 170.0,
+          "is_selected": false,
+          "ml_rank": 2,
+          "ml_score": 0.9392862915992737,
+          "simulated_yield": 1.0
+        }
+      ],
+      "tied_yield": 1.0,
+      "winner_limit": 200.0
+    }
+  ],
+  "month_isolation_checks": [
+    {
+      "data_root": "C:/Users/vishw/AppData/Local/Temp/dtl_upload_analysis_s09jh1w7/data/3 months data/2026-01",
+      "die_id": "DTL_NORM_001_D001",
+      "lot_id": "DTL_NORM_001",
+      "production_month": "2026-01",
+      "simulation_root": "C:/Users/vishw/AppData/Local/Temp/dtl_upload_analysis_s09jh1w7/artifacts/temporal/2026-01/simulation",
+      "uses_only_month_data": true,
+      "uses_only_month_sim": true
+    },
+    {
+      "data_root": "C:/Users/vishw/AppData/Local/Temp/dtl_upload_analysis_s09jh1w7/data/3 months data/2026-02",
+      "die_id": "DTL_NORM_001_D001",
+      "lot_id": "DTL_NORM_001",
+      "production_month": "2026-02",
+      "simulation_root": "C:/Users/vishw/AppData/Local/Temp/dtl_upload_analysis_s09jh1w7/artifacts/temporal/2026-02/simulation",
+      "uses_only_month_data": true,
+      "uses_only_month_sim": true
+    },
+    {
+      "data_root": "C:/Users/vishw/AppData/Local/Temp/dtl_upload_analysis_s09jh1w7/data/3 months data/2026-03",
+      "die_id": "DTL_NORM_001_D001",
+      "lot_id": "DTL_NORM_001",
+      "production_month": "2026-03",
+      "simulation_root": "C:/Users/vishw/AppData/Local/Temp/dtl_upload_analysis_s09jh1w7/artifacts/temporal/2026-03/simulation",
+      "uses_only_month_data": true,
+      "uses_only_month_sim": true
+    }
+  ],
+  "yield_first_proofs": []
+}

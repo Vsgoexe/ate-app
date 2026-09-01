@@ -1,0 +1,111 @@
+{
+  "borderline_margin_percent": 5.0,
+  "candidate_grids": {
+    "CONTACT_RESISTANCE": [
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5,
+      6.0,
+      7.0,
+      8.0,
+      10.0
+    ],
+    "IDDQ": [
+      30.0,
+      35.0,
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0,
+      70.0,
+      80.0,
+      100.0
+    ],
+    "INTERCONNECT_RESISTANCE": [
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      18.0,
+      20.0,
+      25.0
+    ],
+    "ON_RESISTANCE": [
+      18.0,
+      20.0,
+      22.0,
+      25.0,
+      28.0,
+      30.0,
+      35.0,
+      40.0,
+      50.0
+    ],
+    "SUPPLY_CURRENT": [
+      90.0,
+      100.0,
+      110.0,
+      120.0,
+      130.0,
+      140.0,
+      150.0,
+      170.0,
+      200.0
+    ],
+    "VMAX": [
+      1.05,
+      1.08,
+      1.1,
+      1.12,
+      1.15,
+      1.18,
+      1.2,
+      1.22,
+      1.25
+    ],
+    "VMIN": [
+      0.75,
+      0.78,
+      0.8,
+      0.82,
+      0.85,
+      0.88,
+      0.9,
+      0.92,
+      0.95,
+      1.0
+    ]
+  },
+  "condition_policy": "ALL_REQUIRED_CONDITIONS_PASS",
+  "consecutive_count": 3,
+  "die_policy": "ANY_VIOLATION",
+  "notes": {
+    "legacy_simulation_artifacts": "not used",
+    "temporal": true
+  },
+  "objective": {
+    "lambda_ff": 0.15,
+    "lambda_risk": 2.0,
+    "tie_epsilon": 1e-12,
+    "w_defective": 0.0,
+    "w_risky": 0.4,
+    "yield_weight": 1.0
+  },
+  "parameters": [
+    "VMIN",
+    "VMAX",
+    "IDDQ",
+    "SUPPLY_CURRENT",
+    "CONTACT_RESISTANCE",
+    "INTERCONNECT_RESISTANCE",
+    "ON_RESISTANCE"
+  ],
+  "version": "phase12_5d_temporal_parametric_v1",
+  "violation_rate_threshold": 0.01,
+  "write_per_die_for_selected_only": true
+}
