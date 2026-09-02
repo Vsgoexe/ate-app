@@ -303,6 +303,19 @@ def start_packaged(repo: str) -> None:
     print("[2] Test Time Express :8787")
     popen([node(), "server/index.js"], cwd=tto, env=demo_env({"PORT": "8787", "PYTHON": py()}))
 
+    tto_dist = os.path.join(tto, "client", "dist")
+    print("[2b] Test Time UI :5173")
+    popen(
+        [node(), proxy],
+        cwd=tto_dist,
+        env={
+            "STATIC_ROOT": tto_dist,
+            "PORT": "5173",
+            "API_TARGET": "http://127.0.0.1:8787",
+            "SPA_FALLBACK": "1",
+        },
+    )
+
     print("[3] ATE backend :8000")
     occupant = port_service_name(8000)
     if occupant and occupant != "ate_backend":

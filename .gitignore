@@ -10,6 +10,8 @@ node_modules/
 # Packaging
 dist/
 build/
+!desktop/build/
+!desktop/build/installer.nsh
 *.spec
 desktop/stage/
 desktop/dist/

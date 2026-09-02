@@ -103,7 +103,7 @@ try {
   $env:NEXT_PUBLIC_API_BASE_URL = "/api"
   $env:NEXT_PUBLIC_WS_URL = "ws://127.0.0.1:8000/ws/test-floor"
   $env:NEXT_PUBLIC_KPI_M_BIST_SHMOO_URL = "http://127.0.0.1:5000"
-  $env:NEXT_PUBLIC_KPI_TEST_TIME_URL = "http://127.0.0.1:8787"
+  $env:NEXT_PUBLIC_KPI_TEST_TIME_URL = "http://127.0.0.1:5173"
   $env:NEXT_PUBLIC_KPI_RETEST_URL = "http://127.0.0.1:5175"
   $env:NEXT_PUBLIC_KPI_DTL_URL = "http://127.0.0.1:5174/three-month"
   Remove-Item -Recurse -Force ".next" -ErrorAction SilentlyContinue

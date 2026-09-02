@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 const crypto = require("crypto");
 const { spawn } = require("child_process");
 const express = require("express");
@@ -7,7 +8,6 @@ const cors = require("cors");
 const multer = require("multer");
 
 const ROOT = path.resolve(__dirname, "..");
-const UPLOAD_DIR = path.join(ROOT, "uploads");
 const WORKER = path.join(ROOT, "ate_live_worker.py");
 const DEFAULT_STIL = path.join(
   process.env.USERPROFILE || "",
@@ -15,7 +15,14 @@ const DEFAULT_STIL = path.join(
   "Production_SCAN_stuck_at_1000pat.stil"
 );
 
-fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+function resolveUploadDir() {
+  const tmp = process.env.TEMP || process.env.TMP || os.tmpdir();
+  const dir = path.join(tmp, "verilumen-tto-uploads");
+  fs.mkdirSync(dir, { recursive: true });
+  return dir;
+}
+
+const UPLOAD_DIR = resolveUploadDir();
 
 const upload = multer({
   dest: UPLOAD_DIR,
@@ -408,8 +415,7 @@ app.post("/api/analyze-fails", upload.array("logs", 5000), (req, res) => {
 const CLIENT_DIST = path.join(ROOT, "client", "dist");
 if (fs.existsSync(CLIENT_DIST)) {
   app.use(express.static(CLIENT_DIST, { index: false }));
-  app.get("*", (req, res, next) => {
-    if (req.path.startsWith("/api")) return next();
+  app.get(/^(?!\/api).*/, (req, res, next) => {
     res.sendFile(path.join(CLIENT_DIST, "index.html"), (err) => {
       if (err) next();
     });

@@ -41,6 +41,7 @@ export const KPI_TO_AGENT: Record<string, AgentId> = {
   m_bist_shmoo: "shmoo",
   test_time_reduction: "test-time",
   retest_reduction: "retest",
+  dtl: "dtl",
 };
 
 export function isAgentId(value: string | undefined | null): value is AgentId {

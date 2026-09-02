@@ -9,7 +9,7 @@ let supervisor = null;
 let quitting = false;
 let mainWindow = null;
 
-const SERVICE_PORTS = [3000, 5000, 8000, 8001, 8002, 5174, 5175, 8787];
+const SERVICE_PORTS = [3000, 5000, 8000, 8001, 8002, 5173, 5174, 5175, 8787];
 
 function waitForPort(port, timeoutMs) {
   const start = Date.now();

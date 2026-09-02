@@ -14,19 +14,19 @@ Friends: download the installer from GitHub Releases (do not clone this repo):
 
 **https://github.com/Vsgoexe/ate-app/releases**
 
-File name: `Verilumen-ATE-Intelligence-Setup-1.0.1.exe`
+File name: `Verilumen-ATE-Intelligence-Setup-1.0.3.exe`
 
 Developers building locally will also find it at:
 
 ```
-desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.1.exe
+desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.3.exe
 ```
 
 ---
 
 ## Step 2 — Run the installer
 
-1. Double-click `Verilumen-ATE-Intelligence-Setup-1.0.1.exe`
+1. Double-click `Verilumen-ATE-Intelligence-Setup-1.0.3.exe`
 2. If Windows SmartScreen appears (“Windows protected your PC”), click **More info** → **Run anyway** (app is not code-signed)
 3. Choose install location (default suggestion: `C:\VERILUMEN`)
 4. Finish the wizard and launch **VERILUMEN ATE Intelligence**
@@ -82,7 +82,7 @@ powershell -ExecutionPolicy Bypass -File scripts\build-windows.ps1
 Output installer:
 
 ```
-desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.1.exe
+desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.3.exe
 ```
 
 ---
@@ -92,6 +92,7 @@ desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.1.exe
 | Issue                      | Fix                                                              |
 |----------------------------|------------------------------------------------------------------|
 | SmartScreen blocks install | Click **More info** → **Run anyway**                             |
+| Want to stop setup         | Click **Cancel** on any wizard page (confirms, then exits)       |
 | App won’t start            | Close all VERILUMEN windows, then reopen from Start Menu         |
 | Demo data missing          | Fully quit and restart the app                                   |
 | Old build folders          | Use `desktop\dist\` only; `dist-new` and `dist-fresh` are leftovers |

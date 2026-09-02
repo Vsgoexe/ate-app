@@ -809,7 +809,11 @@ export default function App() {
   const [diesPerYear, setDiesPerYear] = useState(1000000);
   const [file, setFile] = useState(null);
   const [running, setRunning] = useState(false);
-  const [status, setStatus] = useState("Upload a STIL file, then click Run live simulation.");
+  const [status, setStatus] = useState(
+    isDemoMode()
+      ? "Demo logs ready. Click Run live simulation to run the bundled STIL, or upload your own."
+      : "Upload a STIL file, then click Run live simulation.",
+  );
   const [statusTone, setStatusTone] = useState("");
   const [profile, setProfile] = useState(null);
   const [series, setSeries] = useState([]);
@@ -1133,28 +1137,9 @@ export default function App() {
     demoStartedRef.current = true;
 
     const runDemoPreload = async () => {
-      resetLive();
-      setRunning(true);
-      setProcessMode("pre");
-      setStatus("Loading demo STIL simulation…");
+      setStatus("Loading demo post-process logs…");
       setStatusTone("");
-
-      let demoDone = null;
-      const demoOnEvent = (ev) => {
-        onEvent(ev);
-        if (ev.type === "done") demoDone = ev;
-      };
-
       try {
-        const res = await fetch(`${API}/api/demo/simulate`);
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({}));
-          throw new Error(err.error || `HTTP ${res.status}`);
-        }
-        await readSse(res, demoOnEvent);
-        if (!demoDone) throw new Error("Demo simulation did not complete");
-
-        setStatus("Loading demo post-process logs…");
         const manifest = await fetch(`${API}/api/demo/logs`).then((r) => {
           if (!r.ok) throw new Error("Demo logs manifest unavailable");
           return r.json();
@@ -1175,27 +1160,13 @@ export default function App() {
         }
         setLogFiles(entries);
         setLogFolders(["LOT_1_Center"]);
-        setProcessMode("post");
-
-        const data = await analyzeLogsInBrowser(
-          entries,
-          demoDone.selected_ids || [],
-          demoDone.discarded_ids || [],
-          (n, total, rel) => {
-            setStatus(`Parsing demo log ${n}/${total}: ${rel}`);
-          }
-        );
-        if (data.files_with_status) {
-          data.next_chip = recommendNextChipGreedyMl(data, demoDone);
-        }
-        setFailAnalysis(data);
         setStatusTone("ok");
-        setStatus("Demo dataset loaded — pre-test simulation and post-process analysis ready.");
+        setStatus(
+          "Demo logs loaded. Click Run live simulation to run the bundled STIL, or upload your own file."
+        );
       } catch (err) {
         setStatus(err.message || String(err));
         setStatusTone("error");
-      } finally {
-        setRunning(false);
       }
     };
 
@@ -1205,7 +1176,8 @@ export default function App() {
 
   const run = async () => {
     if (running) return;
-    if (!file) {
+    const useDemoStil = isDemoMode() && !file;
+    if (!file && !useDemoStil) {
       setStatus("Upload a STIL file first.");
       setStatusTone("error");
       return;
@@ -1214,18 +1186,22 @@ export default function App() {
     setRunning(true);
     setStatus("Starting simulation…");
 
-    const body = new FormData();
-    body.append("stil", file);
-
     const controller = new AbortController();
     abortRef.current = controller;
 
     try {
-      const res = await fetch(`${API}/api/simulate`, {
-        method: "POST",
-        body,
-        signal: controller.signal,
-      });
+      let res;
+      if (useDemoStil) {
+        res = await fetch(`${API}/api/demo/simulate`, { signal: controller.signal });
+      } else {
+        const body = new FormData();
+        body.append("stil", file);
+        res = await fetch(`${API}/api/simulate`, {
+          method: "POST",
+          body,
+          signal: controller.signal,
+        });
+      }
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.error || `HTTP ${res.status}`);
@@ -1338,8 +1314,8 @@ export default function App() {
             {file && <div className="file-name">{file.name}</div>}
           </div>
 
-          <button className="btn" onClick={run} disabled={running || !file}>
-            {running ? "Running…" : "Run live simulation"}
+          <button className="btn" onClick={run} disabled={running || (!file && !isDemoMode())}>
+            {running ? "Running…" : isDemoMode() && !file ? "Run demo STIL" : "Run live simulation"}
           </button>
           <button className="btn secondary" onClick={stop} disabled={!running}>
             Stop

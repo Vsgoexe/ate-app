@@ -1,4 +1,13 @@
-﻿import type { CostSavingsPayload } from "@/api/analysisTypes";
+﻿import { useState } from "react";
+import type { CostSavingsPayload } from "@/api/analysisTypes";
+
+export const DEFAULT_ATE_BURDEN_RATE = 200;
+
+function parseBurdenRate(value: string, fallback = DEFAULT_ATE_BURDEN_RATE): number {
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 0) return fallback;
+  return n;
+}
 
 function money(n: number): { primary: string; centsSub?: string } {
   if (!Number.isFinite(n)) return { primary: "—" };
@@ -29,6 +38,8 @@ export function PredictedCostSavingsCard({
   loading?: boolean;
   error?: string | null;
 }) {
+  const [ateBurdenRate, setAteBurdenRate] = useState(String(DEFAULT_ATE_BURDEN_RATE));
+
   if (loading) {
     return (
       <section
@@ -63,7 +74,10 @@ export function PredictedCostSavingsCard({
 
   const agg = payload.aggregate;
   const scope = payload.selected_scope;
-  const moneyFormatted = money(agg.total_predicted_cost_saving);
+  const rate = parseBurdenRate(ateBurdenRate);
+  const secondsSaved = Number(agg.total_estimated_seconds_saved);
+  const moneySaved = Number.isFinite(secondsSaved) ? (secondsSaved / 3600) * rate : NaN;
+  const moneyFormatted = money(moneySaved);
 
   return (
     <section
@@ -104,6 +118,28 @@ export function PredictedCostSavingsCard({
             <span>Predictions should be validated on the ATE before production deployment.</span>
           </div>
         </div>
+      </div>
+
+      <div className="mt-4 rounded-md border border-amber-500/30 bg-[var(--bg-panel-secondary)] p-3">
+        <label
+          htmlFor="ate-burden-rate"
+          className="text-[10px] font-semibold uppercase tracking-wide text-amber-500"
+        >
+          ATE burden rate ($/hour)
+        </label>
+        <input
+          id="ate-burden-rate"
+          data-testid="ate-burden-rate"
+          type="number"
+          min="0"
+          step="1"
+          value={ateBurdenRate}
+          onChange={(e) => setAteBurdenRate(e.target.value)}
+          className="mt-1.5 w-full max-w-[12rem] rounded-md border border-[var(--border-muted)] bg-[var(--bg-panel)] px-2.5 py-1.5 font-mono text-sm text-[var(--text-primary)] outline-none focus:border-amber-500"
+        />
+        <p className="mt-1.5 text-[11px] text-[var(--text-muted)]">
+          Per-die savings = (test time saved in hours) × ATE $/hour
+        </p>
       </div>
 
       <dl className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5 text-sm">
@@ -174,7 +210,8 @@ export function PredictedCostSavingsCard({
             <div>
               <dt className="font-semibold text-[var(--text-primary)]">Estimated Money Saved</dt>
               <dd className="text-[var(--text-secondary)] mt-0.5">
-                Estimated tester cost saved for the selected die if the recommended test conditions are adopted. This is a model-based estimate, not measured ATE savings.
+                Estimated tester cost saved for the selected die if the recommended test conditions are adopted.
+                Recalculates as (test time saved in hours) × the ATE burden rate you enter. This is a model-based estimate, not measured ATE savings.
               </dd>
             </div>
 

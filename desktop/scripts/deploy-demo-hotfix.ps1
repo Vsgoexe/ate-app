@@ -38,7 +38,8 @@ $copyPairs = @(
   @{ Src = Join-Path $RepoRoot "tools\retest_reduction\retest_ai\api\routes.py"; Dst = Join-Path $SuiteDir "tools\retest_reduction\retest_ai\api\routes.py" },
   @{ Src = Join-Path $RepoRoot "tools\retest_reduction\retest_ai\demo_cache.py"; Dst = Join-Path $SuiteDir "tools\retest_reduction\retest_ai\demo_cache.py" },
   @{ Src = Join-Path $RepoRoot "tools\dtl\src\dtl_agent\api\routes\analysis.py"; Dst = Join-Path $SuiteDir "tools\dtl\src\dtl_agent\api\routes\analysis.py" },
-  @{ Src = Join-Path $RepoRoot "tools\dtl\src\dtl_agent\api\demo_cache.py"; Dst = Join-Path $SuiteDir "tools\dtl\src\dtl_agent\api\demo_cache.py" }
+  @{ Src = Join-Path $RepoRoot "tools\dtl\src\dtl_agent\api\demo_cache.py"; Dst = Join-Path $SuiteDir "tools\dtl\src\dtl_agent\api\demo_cache.py" },
+  @{ Src = Join-Path $RepoRoot "tools\test_time_opt\server\index.js"; Dst = Join-Path $SuiteDir "tools\test_time_opt\server\index.js" }
 )
 foreach ($pair in $copyPairs) {
   if (-not (Test-Path $pair.Src)) { throw "Missing source file: $($pair.Src)" }
@@ -51,7 +52,8 @@ foreach ($pair in $copyPairs) {
 Write-Host "==> Deploy agent frontends (dist)"
 $frontendPairs = @(
   @{ Src = Join-Path $RepoRoot "tools\retest_reduction\frontend\dist"; Dst = Join-Path $SuiteDir "tools\retest_reduction\frontend\dist" },
-  @{ Src = Join-Path $RepoRoot "tools\dtl\frontend\dist"; Dst = Join-Path $SuiteDir "tools\dtl\frontend\dist" }
+  @{ Src = Join-Path $RepoRoot "tools\dtl\frontend\dist"; Dst = Join-Path $SuiteDir "tools\dtl\frontend\dist" },
+  @{ Src = Join-Path $RepoRoot "tools\test_time_opt\client\dist"; Dst = Join-Path $SuiteDir "tools\test_time_opt\client\dist" }
 )
 foreach ($pair in $frontendPairs) {
   if (-not (Test-Path $pair.Src)) {
