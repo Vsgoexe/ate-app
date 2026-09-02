@@ -1,7 +1,7 @@
 {
   "name": "verilumen-ate-desktop",
   "productName": "VERILUMEN ATE Intelligence",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "VERILUMEN ATE Intelligence — offline Windows desktop shell",
   "author": "VERILUMEN",

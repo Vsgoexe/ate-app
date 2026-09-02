@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { offlineFallback } from "@/lib/offlineApiFallback";
 
 /**
- * Same-origin API proxy for Vercel → Render, or Electron → local ate_backend.
- * Browser calls /api/*; this forwards to the FastAPI backend (avoids CORS "Failed to fetch").
+ * Same-origin API proxy: browser /api/* → local ate_backend on 127.0.0.1:8000.
  * If the local backend is down, serve built-in dashboard mock data instead of a hard 502.
  */
-const OFFLINE =
-  process.env.VERILUMEN_OFFLINE === "1" || process.env.NEXT_PUBLIC_OFFLINE === "1";
 const DEFAULT_TARGET = "http://127.0.0.1:8000";
-const TARGET = (process.env.API_PROXY_TARGET || DEFAULT_TARGET).replace(/\/$/, "");
+const rawTarget = (process.env.API_PROXY_TARGET || DEFAULT_TARGET).replace(/\/$/, "");
+const TARGET = /^https?:\/\/(127\.0\.0\.1|localhost)(:|\/|$)/i.test(rawTarget)
+  ? rawTarget
+  : DEFAULT_TARGET;
 
 function fallbackResponse(method: string, pathSegments: string[]): NextResponse | null {
   const path = `/${pathSegments.join("/")}`;
@@ -49,15 +49,14 @@ async function proxy(req: NextRequest, pathSegments: string[]) {
     if (local) return local;
     return NextResponse.json(
       {
-        detail: OFFLINE
-          ? "Local ATE backend unreachable at http://127.0.0.1:8000. Confirm ate_backend.py is running."
-          : "Backend unreachable. Wake https://wafer-yield-api.onrender.com/api/health then retry.",
+        detail:
+          "Local ATE backend unreachable at http://127.0.0.1:8000. Serving built-in dashboard data.",
       },
       { status: 502 },
     );
   }
 
-  if (upstream.status >= 500 || (OFFLINE && upstream.status === 404)) {
+  if (upstream.status >= 500 || upstream.status === 404) {
     const local = fallbackResponse(req.method, pathSegments);
     if (local) return local;
   }
