@@ -2,8 +2,16 @@
  * External pages opened when an Optimization KPI card is clicked.
  * Replace via NEXT_PUBLIC_KPI_* env vars when needed.
  */
+function loopbackOnly(url: string | undefined, fallback?: string): string | undefined {
+  const value = url?.trim();
+  if (value && /^https?:\/\/(127\.0\.0\.1|localhost)(:|\/|$)/i.test(value)) {
+    return value;
+  }
+  return fallback;
+}
+
 export const SHMOO_VL_BASE =
-  process.env.NEXT_PUBLIC_KPI_M_BIST_SHMOO_URL?.trim() ||
+  loopbackOnly(process.env.NEXT_PUBLIC_KPI_M_BIST_SHMOO_URL, "http://127.0.0.1:5000") ??
   "http://127.0.0.1:5000";
 
 /** Capability tabs + embedded metric ids (hidden KPIs powering the parent card). */
@@ -71,12 +79,18 @@ export function shmooCapabilityUrl(view: string): string {
 
 /** Combined Test Time Optimization parent (Test Time + Vector Memory). */
 export const TEST_TIME_OPT_URL =
-  process.env.NEXT_PUBLIC_KPI_TEST_TIME_URL?.trim() ||
+  loopbackOnly(process.env.NEXT_PUBLIC_KPI_TEST_TIME_URL, "http://127.0.0.1:5173") ??
   "http://127.0.0.1:5173";
 
 export const DTL_AGENT_URL =
-  process.env.NEXT_PUBLIC_KPI_DTL_URL?.trim() ||
-  "http://127.0.0.1:5174/three-month";
+  loopbackOnly(
+    process.env.NEXT_PUBLIC_KPI_DTL_URL,
+    "http://127.0.0.1:5174/three-month",
+  ) ?? "http://127.0.0.1:5174/three-month";
+
+export const RETEST_URL =
+  loopbackOnly(process.env.NEXT_PUBLIC_KPI_RETEST_URL, "http://127.0.0.1:5175") ??
+  "http://127.0.0.1:5175";
 
 export const TEST_TIME_CAPABILITIES = [
   {
@@ -104,22 +118,22 @@ export type TestTimeCapabilityMetric = {
 };
 
 export const KPI_EXTERNAL_URLS: Record<string, string | undefined> = {
-  false_failure_reduction:
-    process.env.NEXT_PUBLIC_KPI_FALSE_FAILURE_URL ??
-    "https://placeholder-false-failure.vercel.app",
+  false_failure_reduction: loopbackOnly(process.env.NEXT_PUBLIC_KPI_FALSE_FAILURE_URL),
   test_time_reduction: TEST_TIME_OPT_URL,
-  yield_improvement:
-    process.env.NEXT_PUBLIC_KPI_YIELD_URL ?? "https://placeholder-yield.vercel.app",
-  retest_reduction:
-    process.env.NEXT_PUBLIC_KPI_RETEST_URL ?? "http://127.0.0.1:5175",
-  escape_prevention:
-    process.env.NEXT_PUBLIC_KPI_ESCAPE_URL ?? "https://placeholder-escape.vercel.app",
-  vector_memory_optimization:
-    process.env.NEXT_PUBLIC_KPI_VECTOR_MEMORY_URL ??
-    "https://placeholder-vector-memory.vercel.app",
-  pattern_count_reduction:
-    process.env.NEXT_PUBLIC_KPI_PATTERN_COUNT_URL ??
-    "https://placeholder-pattern-count.vercel.app",
+  yield_improvement: loopbackOnly(process.env.NEXT_PUBLIC_KPI_YIELD_URL),
+  retest_reduction: loopbackOnly(
+    process.env.NEXT_PUBLIC_KPI_RETEST_URL,
+    "http://127.0.0.1:5175",
+  ),
+  escape_prevention: loopbackOnly(process.env.NEXT_PUBLIC_KPI_ESCAPE_URL),
+  vector_memory_optimization: loopbackOnly(
+    process.env.NEXT_PUBLIC_KPI_VECTOR_MEMORY_URL,
+    TEST_TIME_OPT_URL,
+  ),
+  pattern_count_reduction: loopbackOnly(
+    process.env.NEXT_PUBLIC_KPI_PATTERN_COUNT_URL,
+    TEST_TIME_OPT_URL,
+  ),
   m_bist_shmoo: SHMOO_VL_BASE,
   dtl: DTL_AGENT_URL,
 };

@@ -14,19 +14,19 @@ Friends: download the installer from GitHub Releases (do not clone this repo):
 
 **https://github.com/Vsgoexe/ate-app/releases**
 
-File name: `Verilumen-ATE-Intelligence-Setup-1.0.0.exe`
+File name: `Verilumen-ATE-Intelligence-Setup-1.0.1.exe`
 
 Developers building locally will also find it at:
 
 ```
-desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.0.exe
+desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.1.exe
 ```
 
 ---
 
 ## Step 2 — Run the installer
 
-1. Double-click `Verilumen-ATE-Intelligence-Setup-1.0.0.exe`
+1. Double-click `Verilumen-ATE-Intelligence-Setup-1.0.1.exe`
 2. If Windows SmartScreen appears (“Windows protected your PC”), click **More info** → **Run anyway** (app is not code-signed)
 3. Choose install location (default suggestion: `C:\VERILUMEN`)
 4. Finish the wizard and launch **VERILUMEN ATE Intelligence**
@@ -51,12 +51,9 @@ Shortcuts are created on the **Desktop** and **Start Menu**.
 
 ---
 
-## Step 4 — Login
+## Step 4 — Open the dashboard
 
-| Field    | Value       |
-|----------|-------------|
-| Username | `viewer`    |
-| Password | `viewer123` |
+There is no login. The app opens the local dashboard automatically. Nothing is sent to the internet.
 
 ---
 
@@ -85,7 +82,7 @@ powershell -ExecutionPolicy Bypass -File scripts\build-windows.ps1
 Output installer:
 
 ```
-desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.0.exe
+desktop\dist\Verilumen-ATE-Intelligence-Setup-1.0.1.exe
 ```
 
 ---

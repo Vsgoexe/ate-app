@@ -17,32 +17,9 @@ import { allowOfflineFallback, offlineFallback } from "@/lib/offlineApiFallback"
 import { useAuthStore } from "@/stores/authStore";
 import type { ShmooUploadResponse } from "@/types/shmoo";
 
-function isLocalHost(hostname: string): boolean {
-  return hostname === "127.0.0.1" || hostname === "localhost";
-}
-
 export function getApiBase(): string {
-  const offline =
-    process.env.NEXT_PUBLIC_OFFLINE === "1" ||
-    process.env.NEXT_PUBLIC_VERILUMEN_OFFLINE === "1";
-  // On Vercel, always use same-origin /api proxy (fixes browser "Failed to fetch" / CORS).
-  if (
-    !offline &&
-    typeof window !== "undefined" &&
-    /\.vercel\.app$/i.test(window.location.hostname)
-  ) {
-    return "/api";
-  }
-  // Local / Electron: same-origin /api so Next can proxy to ate_backend
-  // and fall back to built-in mock data if port 8000 is down.
-  if (typeof window !== "undefined" && isLocalHost(window.location.hostname)) {
-    return "/api";
-  }
-  const fromEnv = process.env.NEXT_PUBLIC_API_BASE_URL;
-  if (fromEnv?.startsWith("http")) return fromEnv.replace(/\/$/, "");
-  if (fromEnv?.startsWith("/")) return fromEnv.replace(/\/$/, "") || "/api";
-  if (offline) return typeof window !== "undefined" ? "/api" : "http://127.0.0.1:8000/api";
-  return typeof window !== "undefined" ? "/api" : "http://127.0.0.1:8000/api";
+  if (typeof window === "undefined") return "http://127.0.0.1:8000/api";
+  return "/api";
 }
 
 function fallbackOrThrow<T>(path: string, method: string, err: unknown): T {
@@ -57,9 +34,10 @@ function networkErrorMessage(err: unknown, action: string): Error {
   const msg = err instanceof Error ? err.message : String(err);
   if (msg === "Failed to fetch" || msg.includes("NetworkError") || msg.includes("Load failed")) {
     const base = getApiBase();
-    const health =
-      base.startsWith("http") ? `${base}/health` : `${base}/health (local proxy → API_PROXY_TARGET)`;
-    return new Error(`${action}: cannot reach API at ${health}. Confirm the backend is running, then retry.`);
+    const health = base.startsWith("http")
+      ? `${base}/health`
+      : `${base}/health (local ate_backend on 127.0.0.1:8000)`;
+    return new Error(`${action}: cannot reach local API at ${health}.`);
   }
   return err instanceof Error ? err : new Error(msg);
 }
@@ -88,8 +66,6 @@ async function requestJson<T>(path: string, init?: RequestInit, retries = 2): Pr
         ...init,
       });
       if (res.status === 401) {
-        // Real auth rejection only — do not clear on 5xx/network (handled below).
-        useAuthStore.getState().clearSession();
         throw new Error(`API ${path} unauthorized`);
       }
       // Proxy/backend cold-start often returns 502/503; never treat as logout.
@@ -128,7 +104,7 @@ async function getJson<T>(path: string): Promise<T> {
   return requestJson<T>(path);
 }
 
-export async function login(username: string, password: string): Promise<{
+export async function login(username: string, _password: string): Promise<{
   access_token: string;
   token_type: string;
   role: string;
@@ -136,40 +112,14 @@ export async function login(username: string, password: string): Promise<{
   user_id: string;
   expires_in_minutes: number;
 }> {
-  // Never attach a stale Bearer token to login (avoids 401 session wipe races).
-  try {
-    const res = await fetch(`${getApiBase()}/auth/login`, {
-      method: "POST",
-      cache: "no-store",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      throw new Error(`Login failed: ${res.status}${detail ? ` ${detail}` : ""}`);
-    }
-    return res.json() as Promise<{
-      access_token: string;
-      token_type: string;
-      role: string;
-      username: string;
-      user_id: string;
-      expires_in_minutes: number;
-    }>;
-  } catch (err) {
-    const wrapped = networkErrorMessage(err, "Login failed");
-    return fallbackOrThrow<{
-      access_token: string;
-      token_type: string;
-      role: string;
-      username: string;
-      user_id: string;
-      expires_in_minutes: number;
-    }>("/auth/login", "POST", wrapped);
-  }
+  return {
+    access_token: "local-verilumen-jwt-token",
+    token_type: "bearer",
+    role: "VIEWER",
+    username: username.trim() || "viewer",
+    user_id: "USR-LOCAL-01",
+    expires_in_minutes: 1440,
+  };
 }
 
 export function fetchMe() {
@@ -333,7 +283,6 @@ export async function uploadFloorFile(file: File, kind: string = "auto") {
     body: form,
   });
   if (res.status === 401) {
-    useAuthStore.getState().clearSession();
     throw new Error("Upload unauthorized");
   }
   if (!res.ok) {
@@ -376,7 +325,6 @@ export async function uploadShmooFile(file: File): Promise<ShmooUploadResponse> 
       body: form,
     });
     if (res.status === 401) {
-      useAuthStore.getState().clearSession();
       throw new Error("Shmoo upload unauthorized");
     }
     if (!res.ok) {
@@ -409,7 +357,6 @@ export async function fetchLatestShmoo(): Promise<ShmooUploadResponse | null> {
       },
     });
     if (res.status === 401) {
-      useAuthStore.getState().clearSession();
       return null;
     }
     if (!res.ok) return null;
@@ -460,7 +407,6 @@ export async function downloadShmooReport(
       body: JSON.stringify({ session_id: sessionId, text_mode: textMode }),
     });
     if (res.status === 401) {
-      useAuthStore.getState().clearSession();
       throw new Error("Report download unauthorized");
     }
     if (!res.ok) {

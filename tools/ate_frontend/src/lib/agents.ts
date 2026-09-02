@@ -1,3 +1,5 @@
+import { DTL_AGENT_URL, RETEST_URL, SHMOO_VL_BASE, TEST_TIME_OPT_URL } from "./kpiExternalPages";
+
 export const AGENT_IDS = ["shmoo", "test-time", "retest", "dtl"] as const;
 export type AgentId = (typeof AGENT_IDS)[number];
 
@@ -13,33 +15,25 @@ export const AGENTS: Record<AgentId, AgentDef> = {
     id: "shmoo",
     title: "SHMOO ML-Based Optimization",
     description: "LightGBM Shmoo classification and RANSAC boundary reports",
-    url:
-      process.env.NEXT_PUBLIC_KPI_M_BIST_SHMOO_URL?.trim() ||
-      "http://127.0.0.1:5000",
+    url: SHMOO_VL_BASE,
   },
   "test-time": {
     id: "test-time",
     title: "Test Time Optimization",
     description: "LSTM pattern selection for test time and vector memory",
-    url:
-      process.env.NEXT_PUBLIC_KPI_TEST_TIME_URL?.trim() ||
-      "http://127.0.0.1:5173",
+    url: TEST_TIME_OPT_URL,
   },
   retest: {
     id: "retest",
     title: "ATE Retest AI Agent",
     description: "XGBoost retest-benefit prediction",
-    url:
-      process.env.NEXT_PUBLIC_KPI_RETEST_URL?.trim() ||
-      "http://127.0.0.1:5175",
+    url: RETEST_URL,
   },
   dtl: {
     id: "dtl",
     title: "Dynamic Test Limits",
     description: "GRU / RLS three-month limit recommendations",
-    url:
-      process.env.NEXT_PUBLIC_KPI_DTL_URL?.trim() ||
-      "http://127.0.0.1:5174/three-month",
+    url: DTL_AGENT_URL,
   },
 };
 
