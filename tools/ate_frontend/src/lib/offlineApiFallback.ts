@@ -272,16 +272,6 @@ const FILTERS: EventFilterOptions = {
 };
 
 export function allowOfflineFallback(): boolean {
-  if (
-    process.env.NEXT_PUBLIC_OFFLINE === "1" ||
-    process.env.NEXT_PUBLIC_VERILUMEN_OFFLINE === "1"
-  ) {
-    return true;
-  }
-  if (typeof window !== "undefined") {
-    const host = window.location.hostname;
-    return host === "127.0.0.1" || host === "localhost";
-  }
   return true;
 }
 

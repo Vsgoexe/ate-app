@@ -6,13 +6,12 @@ Unified Semiconductor ATE & ML Analytics Suite.
 
 Do **not** clone this repo to run the app. Download the installer from **[Releases](https://github.com/Vsgoexe/ate-app/releases)**:
 
-1. Download `Verilumen-ATE-Intelligence-Setup-1.0.0.exe`
+1. Download `Verilumen-ATE-Intelligence-Setup-1.0.1.exe`
 2. Double-click it. If Windows SmartScreen appears, choose **More info → Run anyway**
 3. Finish the wizard and open **VERILUMEN ATE Intelligence** from the Desktop or Start Menu
+4. The dashboard opens locally — no login, no cloud API
 
 Full steps: [INSTALL.md](INSTALL.md)
-
-Demo login: `viewer` / `viewer123`
 
 ## Structure
 - `tools/shmoo_ml`: M-BIST Shmoo ML Optimization

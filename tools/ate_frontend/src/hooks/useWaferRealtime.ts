@@ -13,57 +13,20 @@ import { KPI_LIVE_EVENTS } from "@/types/kpi";
 import type { WaferTelemetryEvent } from "@/types/wafer";
 import { DIE_EVENT_TYPES } from "@/types/wafer";
 
-const DEFAULT_PROD_WS = "wss://wafer-yield-api.onrender.com/ws/test-floor";
 const LOCAL_WS = "ws://127.0.0.1:8000/ws/test-floor";
-const OFFLINE =
-  process.env.NEXT_PUBLIC_OFFLINE === "1" ||
-  process.env.NEXT_PUBLIC_VERILUMEN_OFFLINE === "1";
 
-/**
- * Always return a real ws/wss URL for the test-floor stream.
- * Guards against mis-set Vercel env (REST /api URL pasted into NEXT_PUBLIC_WS_URL).
- */
+function isLoopbackWs(value: string): boolean {
+  return /^wss?:\/\/(127\.0\.0\.1|localhost)(:|\/|$)/i.test(value);
+}
+
+/** Desktop app only talks to the local ate_backend WebSocket. */
 function resolveWsBase(): string {
   const raw = (process.env.NEXT_PUBLIC_WS_URL || "").trim();
-
-  const asWs = (value: string): string => {
-    if (value.startsWith("https://")) return `wss://${value.slice("https://".length)}`;
-    if (value.startsWith("http://")) return `ws://${value.slice("http://".length)}`;
-    return value;
-  };
-
-  if (OFFLINE) {
-    if (raw.startsWith("ws://") || raw.startsWith("wss://") || raw.startsWith("http")) {
-      const ws = asWs(raw);
-      if (ws.startsWith("ws://") || ws.startsWith("wss://")) return ws;
-    }
-    return LOCAL_WS;
+  if (raw.startsWith("http://127.0.0.1") || raw.startsWith("http://localhost")) {
+    return raw.replace(/^http/i, "ws");
   }
-
-  if (raw) {
-    // Common misconfig: REST base used as WS → causes "WebSocket error"
-    const looksLikeRestApi =
-      raw.includes("/api") && !raw.includes("/ws/");
-    if (looksLikeRestApi) {
-      return DEFAULT_PROD_WS;
-    }
-    const ws = asWs(raw);
-    if (ws.startsWith("wss://") || ws.startsWith("ws://")) return ws;
-  }
-
-  if (typeof window === "undefined") return LOCAL_WS;
-
-  const host = window.location.hostname;
-  if (host === "127.0.0.1" || host === "localhost") {
-    return LOCAL_WS;
-  }
-
-  if (/\.vercel\.app$/i.test(host)) {
-    return DEFAULT_PROD_WS;
-  }
-
-  const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
-  return `${proto}//${window.location.host}/ws/test-floor`;
+  if (isLoopbackWs(raw)) return raw;
+  return LOCAL_WS;
 }
 
 const STALE_MS = Number(process.env.NEXT_PUBLIC_STALE_TELEMETRY_MS ?? 45_000);
