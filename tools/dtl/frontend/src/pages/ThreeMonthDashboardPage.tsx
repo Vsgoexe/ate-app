@@ -29,7 +29,7 @@ import {
   RecommendedTrendChart,
   YieldTrendTable,
 } from "@/components/threeMonth/ComparisonPanels";
-import { PredictedCostSavingsCard } from "@/components/threeMonth/CostSavingsCard";
+import { DEFAULT_ATE_BURDEN_RATE, PredictedCostSavingsCard } from "@/components/threeMonth/CostSavingsCard";
 import { UploadAnalysisPanel } from "@/components/threeMonth/UploadTestDataPanel";
 import {
   TopSummaryCard,
@@ -288,6 +288,7 @@ export function ThreeMonthDashboardPage() {
         lot_id: lotId,
         die_id: dieId,
         production_month: month !== "all" ? month : undefined,
+        tester_cost_per_hour: DEFAULT_ATE_BURDEN_RATE,
       },
       ctrl.signal,
     )

@@ -454,6 +454,12 @@ describe("ThreeMonthDashboardPage", () => {
       "Counterfactual estimate — not measured ATE savings.",
     );
     expect(screen.getByTestId("cost-savings-skips")).toBeInTheDocument();
+    const burden = screen.getByTestId("ate-burden-rate") as HTMLInputElement;
+    expect(burden).toHaveValue(200);
+    // 10.5 s saved × $200/h = $0.5833
+    expect(screen.getByTestId("cost-savings-total")).toHaveTextContent("$0.5833");
+    fireEvent.change(burden, { target: { value: "400" } });
+    expect(screen.getByTestId("cost-savings-total")).toHaveTextContent("$1.17");
     expect(screen.getByTestId("upload-provenance")).toHaveTextContent(
       "Analysis generated from uploaded test data",
     );
